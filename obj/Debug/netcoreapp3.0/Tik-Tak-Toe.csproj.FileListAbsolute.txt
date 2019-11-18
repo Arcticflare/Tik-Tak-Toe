@@ -1,0 +1,11 @@
+E:\Projects\Tik-Tak-Toe\bin\Debug\netcoreapp3.0\Tik-Tak-Toe.exe
+E:\Projects\Tik-Tak-Toe\bin\Debug\netcoreapp3.0\Tik-Tak-Toe.deps.json
+E:\Projects\Tik-Tak-Toe\bin\Debug\netcoreapp3.0\Tik-Tak-Toe.runtimeconfig.json
+E:\Projects\Tik-Tak-Toe\bin\Debug\netcoreapp3.0\Tik-Tak-Toe.runtimeconfig.dev.json
+E:\Projects\Tik-Tak-Toe\bin\Debug\netcoreapp3.0\Tik-Tak-Toe.dll
+E:\Projects\Tik-Tak-Toe\bin\Debug\netcoreapp3.0\Tik-Tak-Toe.pdb
+E:\Projects\Tik-Tak-Toe\obj\Debug\netcoreapp3.0\Tik-Tak-Toe.csprojAssemblyReference.cache
+E:\Projects\Tik-Tak-Toe\obj\Debug\netcoreapp3.0\Tik-Tak-Toe.AssemblyInfoInputs.cache
+E:\Projects\Tik-Tak-Toe\obj\Debug\netcoreapp3.0\Tik-Tak-Toe.AssemblyInfo.cs
+E:\Projects\Tik-Tak-Toe\obj\Debug\netcoreapp3.0\Tik-Tak-Toe.dll
+E:\Projects\Tik-Tak-Toe\obj\Debug\netcoreapp3.0\Tik-Tak-Toe.pdb
