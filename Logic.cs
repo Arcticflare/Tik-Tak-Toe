@@ -38,7 +38,7 @@ namespace Tik_Tak_Toe
                 return false;
             }
 
-            if(SquareToString(squares[1]) == "X" && SquareToString(squares[4]) == "X" && SquareToString(squares[5]) == "X")
+            if(SquareToString(squares[1]) == "X" && SquareToString(squares[4]) == "X" && SquareToString(squares[7]) == "X")
             {
                 return false;
             }
@@ -86,7 +86,7 @@ namespace Tik_Tak_Toe
                 return false;
             }
 
-            if(SquareToString(squares[1]) == "O" && SquareToString(squares[4]) == "O" && SquareToString(squares[5]) == "O")
+            if(SquareToString(squares[1]) == "O" && SquareToString(squares[4]) == "O" && SquareToString(squares[7]) == "O")
             {
                 return false;
             }

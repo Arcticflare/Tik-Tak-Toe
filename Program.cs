@@ -5,19 +5,18 @@ namespace Tik_Tak_Toe
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
             bool restartInput = false;
             do
             {
                 Play();
+
                 Console.WriteLine("Restart? Y/N");
                 string input = Console.ReadLine();
-                if(input.ToLower() == "y")
-                {
-                    restartInput = true;
-                }
-                else{ restartInput = false; }
+
+                restartInput = Restart(input);
             }
             while(restartInput);
         }
@@ -25,13 +24,12 @@ namespace Tik_Tak_Toe
         static void Play()
         {
             List<XO.Square> Squares = new List<XO.Square> 
-            {XO.Square.X, XO.Square.Empty, XO.Square.Empty, XO.Square.Empty, XO.Square.O,
+            {XO.Square.Empty, XO.Square.Empty, XO.Square.Empty, XO.Square.Empty, XO.Square.Empty,
             XO.Square.Empty, XO.Square.Empty, XO.Square.Empty, XO.Square.Empty};
             
             int turn = 1;
             int input = 0;
             bool play = true;
-            string player = string.Empty;
 
             do
             {
@@ -45,22 +43,25 @@ namespace Tik_Tak_Toe
                 Console.WriteLine($" {SquareToString(Squares[6])} | {SquareToString(Squares[7])} | {SquareToString(Squares[8])}");
                 Console.WriteLine("");
 
-                turn = TurnCounter(turn);
-                bool success = int.TryParse(Console.ReadLine(), out input);
-
-                Squares[input - 1] = TurnLogic(input, Squares[input - 1], success, turn);
-
-                if(turn % 2 == 0)
+                // Is it AI turn?
+                if (turn % 2 == 0)
                 {
-                    player = SquareToString(XO.Square.X);
+                    Console.WriteLine("It's the computers turn, press Enter.");
+                    AI.AiTurn(Squares);
                 }
-                else 
-                    {player = SquareToString(XO.Square.O);}
+                else
+                {
+                    Console.WriteLine("It's your turn, where would you like to play?");
+                    bool success = int.TryParse(Console.ReadLine(), out input);
+                    Squares[input - 1] = TurnLogic(input, Squares[input - 1], success, turn, Squares);                    
+                }
+
+                turn++;
 
                 if(!Logic.WinLogic(Squares))
                 {
                     play = false;
-                }
+                }                            
             }
             while(play);
 
@@ -74,25 +75,24 @@ namespace Tik_Tak_Toe
             Console.WriteLine($" {SquareToString(Squares[6])} | {SquareToString(Squares[7])} | {SquareToString(Squares[8])}");
             Console.WriteLine("");
 
-            Console.WriteLine($"Congratulations player {player} has won.");
+            Console.WriteLine("Congratulations player {} has won.");
         }
 
-        static XO.Square TurnLogic(int input,XO.Square square, bool success,int turn)
+        static XO.Square TurnLogic(int input,XO.Square square, bool success,int turn, List<XO.Square> Squares)
         {            
-            if(success && input > 0 && input < 9 && square == XO.Square.Empty)
+            if(success && input > 0 && input < 10 && square == XO.Square.Empty)
             {
-                if(turn % 2 == 0)
-                {
-                    square = XO.Square.X;
-                    return square;
-                }
-                else
-                {
-                    square = XO.Square.O;
-                    return square;
-                }
+                return square = XO.Square.O;
             }
-            else {return square;}
+            else {throw new System.ArgumentException("Invalid Index");}
+        }
+        static bool Restart(string input)
+        {
+            if(input.ToLower() == "y")
+            {
+                return true;
+            }
+            else return false;
         }
         
         static string SquareToString(XO.Square square) 
@@ -108,31 +108,6 @@ namespace Tik_Tak_Toe
                 default:
                     throw new System.ArgumentException("Invalid Enum");
             }
-        }
-
-        static int TurnCounter(int turn)
-        {
-            if(turn % 2 == 0)
-            {
-                Console.WriteLine($"O's turn, where would you like to play?");
-                turn++;
-                return turn;
-            }
-            else
-            {
-                Console.WriteLine($"X's turn, where would you like to play?");
-                turn++;
-                return turn;
-            }
-        }
-
-        public static bool Restart(string input)
-        {
-            if(input == "Y")
-            {
-                return true;
-            }
-            else return false;
         }
     }
 }
