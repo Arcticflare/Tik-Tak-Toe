@@ -25,7 +25,7 @@ namespace Tik_Tak_Toe
         static void Play()
         {
             List<XO.Square> Squares = new List<XO.Square> 
-            {XO.Square.O, XO.Square.O, XO.Square.Empty, XO.Square.Empty, XO.Square.X,
+            {XO.Square.Empty, XO.Square.Empty, XO.Square.Empty, XO.Square.Empty, XO.Square.Empty,
             XO.Square.Empty, XO.Square.Empty, XO.Square.Empty, XO.Square.Empty};
             
             int turn = 1;
@@ -43,9 +43,6 @@ namespace Tik_Tak_Toe
                 Console.WriteLine("------------");
                 Console.WriteLine($" {SquareToString(Squares[6])} | {SquareToString(Squares[7])} | {SquareToString(Squares[8])}");
                 Console.WriteLine("");
-
-                int index = 0;
-                AI.AICombination(Squares, index);
 
                 // Is it AI turn?
                 if (turn % 2 == 0)
