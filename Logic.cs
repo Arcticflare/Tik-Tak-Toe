@@ -123,5 +123,14 @@ namespace Tik_Tak_Toe
                     throw new System.ArgumentException("Invalid Enum");
             }
         }
+
+        public static bool Restart(string input)
+        {
+            if(input.ToLower() == "y")
+            {
+                return true;
+            }
+            else return false;
+        }
     }
 }

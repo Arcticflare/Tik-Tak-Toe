@@ -12,11 +12,12 @@ namespace Tik_Tak_Toe
             do
             {
                 Play();
+                
 
                 Console.WriteLine("Restart? Y/N");
                 string input = Console.ReadLine();
 
-                restartInput = Restart(input);
+                restartInput = Logic.Restart(input);
             }
             while(restartInput);
         }
@@ -24,7 +25,7 @@ namespace Tik_Tak_Toe
         static void Play()
         {
             List<XO.Square> Squares = new List<XO.Square> 
-            {XO.Square.Empty, XO.Square.Empty, XO.Square.Empty, XO.Square.Empty, XO.Square.Empty,
+            {XO.Square.O, XO.Square.O, XO.Square.Empty, XO.Square.Empty, XO.Square.X,
             XO.Square.Empty, XO.Square.Empty, XO.Square.Empty, XO.Square.Empty};
             
             int turn = 1;
@@ -43,11 +44,14 @@ namespace Tik_Tak_Toe
                 Console.WriteLine($" {SquareToString(Squares[6])} | {SquareToString(Squares[7])} | {SquareToString(Squares[8])}");
                 Console.WriteLine("");
 
+                int index = 0;
+                AI.AICombination(Squares, index);
+
                 // Is it AI turn?
                 if (turn % 2 == 0)
                 {
-                    Console.WriteLine("It's the computers turn, press Enter.");
-                    AI.AiTurn(Squares);
+                    Console.WriteLine("Computers turn.");
+                    AI.AiTurn(Squares, turn);
                 }
                 else
                 {
@@ -74,8 +78,6 @@ namespace Tik_Tak_Toe
             Console.WriteLine("------------");
             Console.WriteLine($" {SquareToString(Squares[6])} | {SquareToString(Squares[7])} | {SquareToString(Squares[8])}");
             Console.WriteLine("");
-
-            Console.WriteLine("Congratulations player {} has won.");
         }
 
         static XO.Square TurnLogic(int input,XO.Square square, bool success,int turn, List<XO.Square> Squares)
@@ -85,14 +87,6 @@ namespace Tik_Tak_Toe
                 return square = XO.Square.O;
             }
             else {throw new System.ArgumentException("Invalid Index");}
-        }
-        static bool Restart(string input)
-        {
-            if(input.ToLower() == "y")
-            {
-                return true;
-            }
-            else return false;
         }
         
         static string SquareToString(XO.Square square) 
