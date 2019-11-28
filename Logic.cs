@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Tik_Tak_Toe
 {
@@ -124,13 +125,22 @@ namespace Tik_Tak_Toe
             }
         }
 
-        public static bool Restart(string input)
+        public static bool Restart()
         {
+            Console.WriteLine("Restart? Y/N");
+            string input = Console.ReadLine();
+
             if(input.ToLower() == "y")
             {
                 return true;
             }
             else return false;
+        }
+
+        public static bool FinishGame(List<XO.Square> squaresList)
+        {
+            if(squaresList.Any(o => o != squaresList[0])) {return true;}
+            return false;
         }
     }
 }

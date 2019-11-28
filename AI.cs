@@ -112,6 +112,12 @@ namespace Tik_Tak_Toe
                     squareList[1] = X;
                     goto FinishTurn;
                 }
+
+                if(squareList[8] == O)
+                {
+                    squareList[2] = X;
+                    goto FinishTurn;
+                }
             }
 
             //Player took anywhere else.
@@ -140,7 +146,7 @@ namespace Tik_Tak_Toe
                         Squares[8] = X;
                         break;
                     case 8:
-                        Squares[6] = X;
+                        Squares[7] = X;
                         break;
                     default:
                         break;
@@ -162,9 +168,15 @@ namespace Tik_Tak_Toe
                     goto FinishTurn;
                 }
 
-                if (Squares[1] == O || Squares[3] == O || Squares[7] == O)
+                if (Squares[1] == O || Squares[3] == O)
                 {
                     Squares[5] = X;
+                    goto FinishTurn;
+                }
+
+                if (Squares[7] == O)
+                {
+                    Squares[2] = X;
                     goto FinishTurn;
                 }
 
@@ -200,13 +212,13 @@ namespace Tik_Tak_Toe
                         }
                         break;
                     case 3:
-                        if (Squares[1] == O || Squares[5] == O || Squares[7] == O || Squares[8] == O)
+                        if (Squares[2] == O || Squares[5] == O || Squares[7] == O || Squares[8] == O)
                         {
-                            Squares[2] = X;
+                            Squares[1] = X;
                         }
                         else
                         {
-                            Squares[1] = X;
+                            Squares[6] = X;
                         }
                         break;
                     case 4:
@@ -465,9 +477,10 @@ namespace Tik_Tak_Toe
                     Squares[7] = X;
                     goto FinishTurn;
                 }
+                //This is wrong, fix it.
                 if(Squares[6] == O)
                 {
-                    Squares[6] = X;
+                    Squares[2] = X;
                     goto FinishTurn;
                 }
                 if (Squares[7] == O)
@@ -488,10 +501,7 @@ namespace Tik_Tak_Toe
                 if (squareList[i] == Empty)
                 {
                     squareList[i] = X;
-
-                    Console.WriteLine("Restart? Y/N");
-                    string input = Console.ReadLine();
-                    Logic.Restart(input);
+                    Logic.Restart();
                 }
             }
         }

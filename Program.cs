@@ -13,11 +13,7 @@ namespace Tik_Tak_Toe
             {
                 Play();
                 
-
-                Console.WriteLine("Restart? Y/N");
-                string input = Console.ReadLine();
-
-                restartInput = Logic.Restart(input);
+                Logic.Restart();
             }
             while(restartInput);
         }
@@ -59,10 +55,10 @@ namespace Tik_Tak_Toe
 
                 turn++;
 
-                if(!Logic.WinLogic(Squares))
+                if(!Logic.WinLogic(Squares) || turn == 10)
                 {
                     play = false;
-                }                            
+                }
             }
             while(play);
 
